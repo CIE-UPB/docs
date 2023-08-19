@@ -66,5 +66,5 @@ state ServerModel {
 
 ## MVC - PNG
 
-![AnálisisMVC](.\assets\AnálisisMVC.png)
+<img src=".\assets\AnálisisMVC.png" alt="AnálisisMVC" />
 

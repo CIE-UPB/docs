@@ -2,28 +2,28 @@
 
 Sistema Gestión de Usuarios
 
-![GestionUsuarioAdmin.drawio](.\assets\GestionUsuarioAdmin.drawio.png)
+<img src=".\assets\GestionUsuarioAdmin.drawio.png" alt="GestionUsuarioAdmin.drawio" />
 
 ## Authentication System
 
 Sistema de Autenticación
 
-![SistemaAutenticación](.\assets\SistemaAutenticación.png)
+<img src=".\assets\SistemaAutenticación.png" alt="SistemaAutenticación" />
 
 ## Resource and Cost Management System
 
 Sistema de Gestión de Recursos y Costos
 
-![SistemadeGestióndeRecursosyCostos](.\assets\SistemadeGestióndeRecursosyCostos.png)
+<img src=".\assets\SistemadeGestióndeRecursosyCostos.png" alt="SistemadeGestióndeRecursosyCostos" />
 
 ## User Management System
 
 Sistema Gestor de Usuarios:
 
-![SistemaGestorDeUsuarios.drawio](.\assets\SistemaGestorDeUsuarios.drawio.png)
+<img src=".\assets\SistemaGestorDeUsuarios.drawio.png" alt="SistemaGestorDeUsuarios.drawio" />
 
 ## View User Resources
 
 Ver Recursos Usuario:
 
-![VerRecursosUsuario](.\assets\VerRecursosUsuario.png)
+<img src=".\assets\VerRecursosUsuario.png" alt="VerRecursosUsuario" />

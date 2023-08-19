@@ -1,6 +1,6 @@
 # Domain
 
-![ModeloDelDominio](.\assets\ModeloDelDominio.png)
+<img src=".\assets\ModeloDelDominio.png" alt="ModeloDelDominio" />
 
 
 
