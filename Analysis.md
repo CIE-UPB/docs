@@ -1,4 +1,4 @@
-# MVC - State diagrams
+# MVC - State diagrams | Analysis
 
 ## Views
 
