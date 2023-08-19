@@ -1,6 +1,6 @@
 # Domain
 
-![ModeloDelDominio](D:\UPB\ProyectoGrado\cie\docs\assets\ModeloDelDominio.png)
+![ModeloDelDominio](.\assets\ModeloDelDominio.png)
 
 
 

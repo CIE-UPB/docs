@@ -66,5 +66,5 @@ state ServerModel {
 
 ## MVC - PNG
 
-![AnálisisMVC](D:\UPB\ProyectoGrado\cie\docs\assets\AnálisisMVC.png)
+![AnálisisMVC](.\assets\AnálisisMVC.png)
 
