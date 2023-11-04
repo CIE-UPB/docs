@@ -1,4 +1,4 @@
-# Sequence diagrams Services Auth:  *Nginx - OAuth2 - Keycloak*
+# Sequence diagrams Services Auth:  *Nginx - OAuth2 - Keycloak* (LEGACY)
 
 ```mermaid
 sequenceDiagram
