@@ -1,0 +1,26 @@
+@startuml Roles
+left to right direction
+
+package CIE {
+
+    actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+    actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+    rectangle InicioDeSesión {
+        (IncorrectLogin).>(login):<<include>>
+        (IncorrectLogin) .> (CorrectLogin) : <<include>>
+        (CorrectLogin) .> (login) : <<include>>
+        user -- (login)
+        admin -- (login)
+        user -- (logout)
+        admin -- (logout)
+        usecase "Login" as login
+        usecase "Logout" as logout
+    }
+}
+
+actor "Guest" as guest
+
+note "Guest cannot perform Login" as N1
+guest -- N1
+N1 .. IncorrectLogin
+@enduml

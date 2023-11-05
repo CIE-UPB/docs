@@ -1,0 +1,29 @@
+@startuml Roles
+left to right direction
+
+package CIE {
+    actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+    
+    rectangle Variants {
+        usecase "View Value Variant"
+        usecase "Create Variant"
+        usecase "Edit Variant"
+        usecase "Delete Variant"
+        usecase "Filters by Variant"
+        usecase "Export Variant"
+        usecase "View all Variants"
+    }
+
+
+
+    user -- (View Value Variant)
+    user -- (Create Variant)
+    user -- (Edit Variant)
+    user -- (Delete Variant)
+    user -- (Filters by Variant)
+    user -- (Export Variant)
+    user -- (View all Variants)
+}
+
+
+@enduml

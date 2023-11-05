@@ -1,0 +1,69 @@
+@startuml Roles
+left to right direction
+
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+package CIE {
+    rectangle Historical {
+        usecase "Save Historical Inventory" as historial
+        usecase "View Historical" as VH
+        usecase "Filter By Date"
+        usecase "Filter By Item"
+
+    }
+
+    rectangle "Product System" as productsSystem {
+        usecase "Create Item"
+        usecase "Download All Items"
+        usecase "Search Item"
+        usecase "Filters"
+        usecase "Search By Filter"
+        usecase "Favorites"
+        usecase "View All Products"
+        usecase "Filter By Category"
+        usecase "Toggle Favorite"
+        usecase "Toggle Product" <<hide unhide>>
+    }
+
+    rectangle ItemSystem {
+        usecase "Quantity Edit"
+        usecase "Edit Item"
+        usecase "View Information Item"
+        usecase "Delete Item"
+        usecase "Create note for item"
+        usecase "Quantity Create"
+        
+    }
+
+(Quantity Edit) .> (historial) : include
+(Create Item) .> (historial) : include
+user - (historial)
+user - VH
+user - (Filter By Date)
+user - (Filter By Item)
+
+user - (Create Item)
+user - (Download All Items)
+user - (Search Item)
+user - (Filters)
+user - (Search By Filter)
+user - (Favorites)
+user - (View All Products)
+user - (Filter By Category)
+user - (Toggle Favorite)
+user - (Toggle Product)
+
+
+user -- (Quantity Edit)
+user -- (Edit Item)
+user -- (View Information Item)
+user -- (Delete Item)
+user -- (Create note for item)
+user -- (Quantity Create)
+
+}
+
+
+
+
+
+@enduml

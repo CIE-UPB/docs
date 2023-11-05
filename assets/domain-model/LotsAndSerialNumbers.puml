@@ -1,0 +1,27 @@
+@startuml Roles
+left to right direction
+
+package CIE {
+    actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+
+    rectangle "Lots / Serial Numbers" as lots {
+        usecase "View Value Lots / Serial Numbers"
+        usecase "Create Lots / Serial Numbers"
+        usecase "Edit Lots / Serial Numbers"
+        usecase "Delete Lots / Serial Numbers"
+        usecase "Filters by Lots / Serial Numbers"
+        usecase "Export Lots / Serial Numbers"
+        usecase "View all Lots / Serial Numbers"
+    }
+
+    user -- (View Value Lots / Serial Numbers)
+    user -- (Create Lots / Serial Numbers)
+    user -- (Edit Lots / Serial Numbers)
+    user -- (Delete Lots / Serial Numbers)
+    user -- (Filters by Lots / Serial Numbers)
+    user -- (Export Lots / Serial Numbers)
+    user -- (View all Lots / Serial Numbers)
+}
+
+
+@enduml

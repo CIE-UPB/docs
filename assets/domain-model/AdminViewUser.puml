@@ -1,0 +1,71 @@
+@startuml Roles
+left to right direction
+
+actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+note right of (admin) 
+Just Watch
+end note
+
+package CIE {
+    rectangle Historical {
+        usecase "View Historical" as VH
+        usecase "Filter By Date" as FBD
+        usecase "Filter By Item" as FBI
+        usecase "Filter By User" as FBU
+        usecase "Filter By Category" as FBC
+        usecase "Filter By Price" as FBP
+        usecase "Filter By Status" as FBS
+    }
+
+    rectangle "Product System" as productsSystem {
+        usecase "Download All Items" as DAI
+        usecase "Search Item" as SI
+        usecase "Filters" as F
+        usecase "Search By Filter" as SBF
+        usecase "View All Products" as VAP
+        usecase "Filter By Category" as FBC
+    }
+
+    rectangle ItemSystem {
+        usecase "View Information Item" as VII
+    }
+
+    admin --> VH
+    admin --> FBD
+    admin --> FBI
+    admin --> FBU
+    admin --> FBC
+    admin --> FBP
+    admin --> FBS
+
+    admin --> DAI
+    admin --> SI
+    admin --> F
+    admin --> SBF
+    admin --> VAP
+    admin --> FBC
+
+    admin --> VII
+
+VH <|-- (user) : <<extends>>
+FBD <|-- (user) : <<extends>>
+FBI <|-- (user) : <<extends>>
+FBU <|-- (user) : <<extends>>
+FBC<|-- (user) : <<extends>>
+FBP<|-- (user) : <<extends>>
+FBS<|-- (user) : <<extends>>
+
+  
+DAI<|-- (user) : <<extends>>
+SI<|-- (user) : <<extends>>
+
+F<|-- (user) : <<extends>>
+ 
+SBF<|-- (user)  : <<extends>>
+VAP<|-- (user) : <<extends>>
+
+VII<|-- (user) : <<extends>>
+}
+
+@enduml

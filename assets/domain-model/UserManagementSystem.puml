@@ -1,0 +1,28 @@
+@startuml Roles
+left to right direction
+
+package CIE {
+
+    actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+    rectangle "Management System" as ManagementSystem {
+        usecase "Create User" as CU
+        usecase "Add Role" as AR
+        usecase "View User" as VU
+        usecase "Ver All Users" as VAU
+        usecase "Update User" as EU <<Edit>>
+        usecase "Deleter User" as DU
+        usecase "Toggle User" as TU <<enable disable>>
+        usecase "Search User" as SU
+        usecase "Filter User" as FU
+    }
+    admin -- CU
+    admin -- VU
+    admin -- VAU
+    admin -- EU
+    admin -- DU
+    admin -- TU
+    admin -- SU
+    admin -- FU
+}
+
+@enduml
