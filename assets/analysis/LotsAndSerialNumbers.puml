@@ -1,0 +1,37 @@
+@startuml LotsAndSerialNumbers
+left to right direction
+
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+
+rectangle "Views" as Views {
+  boundary "Lots/SerialNumbersView" as LotsView
+}
+
+database "Models" as Entities {
+  entity LotEntity
+}
+
+rectangle "Controllers" as Controllers {
+  control GetAllLotsController
+  control GetLotByIdController
+  control CreateLotController
+  control UpdateLotController
+  control DeleteLotController
+}
+
+user --> LotsView
+
+LotsView --> GetAllLotsController
+LotsView --> GetLotByIdController
+LotsView --> CreateLotController
+LotsView --> UpdateLotController
+LotsView --> DeleteLotController
+
+GetAllLotsController --> LotEntity
+GetLotByIdController --> LotEntity
+CreateLotController --> LotEntity
+UpdateLotController --> LotEntity
+DeleteLotController --> LotEntity
+
+
+@enduml

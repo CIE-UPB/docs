@@ -1,71 +1,70 @@
-@startuml Roles
+@startuml AdminViewUser
+skinparam rectangle {
+  BackgroundColor<<CIE>> LightGrey
+}
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam actor {
+  BackgroundColor AntiqueWhite
+  BorderColor Black
+}
+skinparam note {
+  BackgroundColor Gold
+}
 left to right direction
 
 actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
 actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
 note right of (admin) 
-Just Watch
+  Just Watch
 end note
 
 package CIE {
     rectangle Historical {
-        usecase "View Historical" as VH
-        usecase "Filter By Date" as FBD
-        usecase "Filter By Item" as FBI
-        usecase "Filter By User" as FBU
-        usecase "Filter By Category" as FBC
-        usecase "Filter By Price" as FBP
-        usecase "Filter By Status" as FBS
+        usecase "View Historical" as VH #SkyBlue
+        usecase "Filter By Date" as FBD #Yellow
+        usecase "Filter By Item" as FBI #Violet
+        usecase "Filter By User" as FBU #Tomato
+        usecase "Filter By Category" as FBC #Orange
+        usecase "Filter By Price" as FBP #Pink
+        usecase "Filter By Status" as FBS #LightGreen
+        FBD ..> VH : <<extends>>
+        FBI ..> VH : <<extends>>
+        FBU ..> VH : <<extends>>
+        FBC ..> VH : <<extends>>
+        FBP ..> VH : <<extends>>
+        FBS ..> VH : <<extends>>
     }
 
     rectangle "Product System" as productsSystem {
-        usecase "Download All Items" as DAI
-        usecase "Search Item" as SI
-        usecase "Filters" as F
-        usecase "Search By Filter" as SBF
-        usecase "View All Products" as VAP
-        usecase "Filter By Category" as FBC
+        usecase "View All Products" as VAP #SkyBlue
+        usecase "Download All Items" as DAI #Yellow
+        usecase "Search Item" as SI #Violet
+        usecase "Filters" as F #Tomato
+        usecase "Search By Filter" as SBF #Orange
+        usecase "Filter By Category" as FBC #Pink
+        SI ..> VAP : <<extends>>
+        F ..> VAP : <<extends>>
+        SBF ..> VAP : <<extends>>
+        FBC ..> VAP : <<extends>>
+
     }
 
     rectangle ItemSystem {
-        usecase "View Information Item" as VII
+        usecase "View Information Item" as VII #SkyBlue
     }
 
     admin --> VH
-    admin --> FBD
-    admin --> FBI
-    admin --> FBU
-    admin --> FBC
-    admin --> FBP
-    admin --> FBS
-
-    admin --> DAI
-    admin --> SI
-    admin --> F
-    admin --> SBF
     admin --> VAP
-    admin --> FBC
-
+    admin --> DAI
     admin --> VII
 
 VH <|-- (user) : <<extends>>
-FBD <|-- (user) : <<extends>>
-FBI <|-- (user) : <<extends>>
-FBU <|-- (user) : <<extends>>
-FBC<|-- (user) : <<extends>>
-FBP<|-- (user) : <<extends>>
-FBS<|-- (user) : <<extends>>
-
-  
 DAI<|-- (user) : <<extends>>
-SI<|-- (user) : <<extends>>
-
-F<|-- (user) : <<extends>>
- 
-SBF<|-- (user)  : <<extends>>
 VAP<|-- (user) : <<extends>>
-
 VII<|-- (user) : <<extends>>
 }
-
 @enduml

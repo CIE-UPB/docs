@@ -1,0 +1,42 @@
+@startuml ProductsSystem
+left to right direction
+
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+
+rectangle "Views" as Views {
+    boundary ProductView
+}
+
+database "Models" as Entities {
+    entity ProductsEntity
+}
+
+rectangle "Controllers" as Controllers {
+    rectangle "Product" {
+        control GetProductController <<all & by id>>
+        control CreateProductController
+        control UpdateProductController
+        control DeleteProductController
+    }
+    control DownloadAllProductsController
+}
+
+user -> ProductView
+admin -> ProductView
+
+ProductView -> GetProductController
+ProductView -> CreateProductController
+ProductView -> UpdateProductController
+ProductView -> DeleteProductController
+
+ProductView -> DownloadAllProductsController
+
+GetProductController -> ProductsEntity
+CreateProductController -> ProductsEntity
+UpdateProductController -> ProductsEntity
+DeleteProductController -> ProductsEntity
+
+DownloadAllProductsController -> ProductsEntity
+
+@enduml

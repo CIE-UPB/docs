@@ -1,4 +1,4 @@
-@startuml Roles
+@startuml AuthenticationSystem
 left to right direction
 
 package CIE {
@@ -13,8 +13,8 @@ package CIE {
         admin -- (login)
         user -- (logout)
         admin -- (logout)
-        usecase "Login" as login
-        usecase "Logout" as logout
+        usecase "Login" as login #SkyBlue
+        usecase "Logout" as logout #SkyBlue
     }
 }
 

@@ -1,28 +1,40 @@
-@startuml Roles
+@startuml UserManagementSystem
+skinparam rectangle {
+  BackgroundColor<<ManagementSystem>> LightGrey
+}
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam actor {
+  BackgroundColor AntiqueWhite
+  BorderColor Black
+}
 left to right direction
 
-package CIE {
-
-    actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
-    rectangle "Management System" as ManagementSystem {
-        usecase "Create User" as CU
-        usecase "Add Role" as AR
-        usecase "View User" as VU
-        usecase "Ver All Users" as VAU
-        usecase "Update User" as EU <<Edit>>
-        usecase "Deleter User" as DU
-        usecase "Toggle User" as TU <<enable disable>>
-        usecase "Search User" as SU
-        usecase "Filter User" as FU
+actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+rectangle "Management System" as ManagementSystem {
+    usecase "Create User" as CU #SkyBlue
+    usecase "Add Role" as AR #Yellow
+    usecase "Update User" as EU <<Edit>> #SkyBlue
+    usecase "Deleter User" as DU #SkyBlue
+    usecase "Toggle User" as TU <<enable disable>> #Orange
+    rectangle #PowderBlue {
+        usecase "View By User" as VU #Pink
+        usecase "View All Users" as VAU #SkyBlue
+        usecase "Search User" as SU #Gold
+        usecase "Filter User" as FU #Beige
     }
-    admin -- CU
-    admin -- VU
-    admin -- VAU
-    admin -- EU
-    admin -- DU
-    admin -- TU
-    admin -- SU
-    admin -- FU
+    
 }
-
+admin -- CU
+admin -- VAU
+admin -- EU
+admin -- DU
+TU .> EU : <<extends>>
+AR .> CU : <<extends>>
+VU .> VAU : <<extends>>
+SU .> VAU : <<extends>>
+FU .> VAU : <<extends>>
 @enduml

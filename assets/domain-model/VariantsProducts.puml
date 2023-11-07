@@ -1,29 +1,36 @@
-@startuml Roles
+@startuml VariantsProducts
+skinparam rectangle {
+  BackgroundColor<<Variants>> LightGrey
+}
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+  BorderThickness 2
+}
+skinparam actor {
+  BackgroundColor AntiqueWhite
+  BorderColor Black
+}
 left to right direction
 
-package CIE {
-    actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
-    
-    rectangle Variants {
-        usecase "View Value Variant"
-        usecase "Create Variant"
-        usecase "Edit Variant"
-        usecase "Delete Variant"
-        usecase "Filters by Variant"
-        usecase "Export Variant"
-        usecase "View all Variants"
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+
+rectangle Variants <<Variants>> {
+    usecase "Create Variant" as CV #SkyBlue
+    usecase "Edit Variant" as EV #SkyBlue
+    usecase "Delete Variant" as DV #SkyBlue
+    usecase "Export Variant" as EXV #SkyBlue
+    rectangle #PowderBlue {
+        usecase "View Value Variant" as VVV #SkyBlue
+        usecase "View all Variants" as VAC #LightGreen
+        usecase "Filters by Variant" as FBV #Gold
     }
-
-
-
-    user -- (View Value Variant)
-    user -- (Create Variant)
-    user -- (Edit Variant)
-    user -- (Delete Variant)
-    user -- (Filters by Variant)
-    user -- (Export Variant)
-    user -- (View all Variants)
 }
-
-
+user -- VVV
+user -- CV
+user -- EV
+user -- DV
+user -- EXV
+VAC .> VVV : <<extends>>
+FBV .> VVV : <<extends>>
 @enduml

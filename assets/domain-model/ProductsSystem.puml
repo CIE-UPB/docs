@@ -1,69 +1,71 @@
-@startuml Roles
+@startuml ProductsSystem
+skinparam rectangle {
+  BackgroundColor<<Historical>> Wheat
+  BackgroundColor<<ProductSystem>> LightBlue
+  BackgroundColor<<ItemSystem>> LightGreen
+}
+skinparam usecase {
+  BackgroundColor White
+  BorderColor Black
+}
+skinparam actor {
+  BackgroundColor AntiqueWhite
+  BorderColor Black
+}
 left to right direction
-
 actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
-package CIE {
-    rectangle Historical {
-        usecase "Save Historical Inventory" as historial
-        usecase "View Historical" as VH
-        usecase "Filter By Date"
-        usecase "Filter By Item"
 
-    }
+rectangle Historical <<Historical>> {
+  usecase "Save Historical Inventory" as historial
+  usecase "View Historical" as VH #SkyBlue
+  usecase "Filter By Date" as FD
+  usecase "Filter By Item" AS FI
+  FD .> VH : <<extends>>
+  FI .> VH : <<extends>>
+}
 
-    rectangle "Product System" as productsSystem {
-        usecase "Create Item"
-        usecase "Download All Items"
-        usecase "Search Item"
-        usecase "Filters"
-        usecase "Search By Filter"
-        usecase "Favorites"
-        usecase "View All Products"
-        usecase "Filter By Category"
-        usecase "Toggle Favorite"
-        usecase "Toggle Product" <<hide unhide>>
-    }
+rectangle "Product System" <<ProductSystem>> {
+  usecase "Create Item" #SkyBlue
+  usecase "View All Products" as VAP #SkyBlue
+  usecase "Download All Items"
+  usecase "Search Item" #SkyBlue
+  usecase "View Favorites"
+  usecase "Filters" as FS
+  usecase "Search By Filter" as SBF
+  usecase "Filter By Category" as FBC
+  usecase "Toggle Favorite"
+  usecase "Toggle Product" <<hide unhide>> #SkyBlue
+  FS .> VAP : <<extends>>
+  SBF .> VAP : <<extends>>
+  FBC .> VAP : <<extends>>
+  (Toggle Favorite) .> (View Favorites) : <<extends>>
+  (View Favorites) .> VAP : <<extends>>
+}
 
-    rectangle ItemSystem {
-        usecase "Quantity Edit"
-        usecase "Edit Item"
-        usecase "View Information Item"
-        usecase "Delete Item"
-        usecase "Create note for item"
-        usecase "Quantity Create"
-        
-    }
+rectangle ItemSystem <<ItemSystem>> {
+  usecase "Quantity Edit" #SkyBlue
+  usecase "Edit Item" #SkyBlue
+  usecase "View Information Item" #SkyBlue
+  usecase "Delete Item" #SkyBlue
+  usecase "Create note for item"
+  usecase "Quantity Create" #SkyBlue
+}
 
-(Quantity Edit) .> (historial) : include
-(Create Item) .> (historial) : include
-user - (historial)
+(Quantity Edit) <. (historial) : <<include>>
+(Create Item) <. (historial) : <<include>>
 user - VH
-user - (Filter By Date)
-user - (Filter By Item)
 
 user - (Create Item)
 user - (Download All Items)
 user - (Search Item)
-user - (Filters)
-user - (Search By Filter)
-user - (Favorites)
-user - (View All Products)
-user - (Filter By Category)
-user - (Toggle Favorite)
+user - VAP
 user - (Toggle Product)
 
 
 user -- (Quantity Edit)
 user -- (Edit Item)
 user -- (View Information Item)
+(Create note for item) .> (View Information Item) : <<extends>>
 user -- (Delete Item)
-user -- (Create note for item)
 user -- (Quantity Create)
-
-}
-
-
-
-
-
 @enduml

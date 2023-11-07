@@ -1,26 +1,25 @@
-@startuml Roles
+@startuml LotsAndSerialNumbers
 left to right direction
 
 package CIE {
     actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
 
     rectangle "Lots / Serial Numbers" as lots {
-        usecase "View Value Lots / Serial Numbers"
-        usecase "Create Lots / Serial Numbers"
-        usecase "Edit Lots / Serial Numbers"
-        usecase "Delete Lots / Serial Numbers"
-        usecase "Filters by Lots / Serial Numbers"
-        usecase "Export Lots / Serial Numbers"
-        usecase "View all Lots / Serial Numbers"
+        usecase "View Value Lots / Serial Numbers" as VS #SkyBlue
+        usecase "Filters by Lots / Serial Numbers" as FS
+        usecase "Export Lots / Serial Numbers" as ES #SkyBlue
+        usecase "Create Lots / Serial Numbers" #SkyBlue
+        usecase "Edit Lots / Serial Numbers" #SkyBlue
+        usecase "Delete Lots / Serial Numbers" #SkyBlue
     }
 
-    user -- (View Value Lots / Serial Numbers)
+    user -- VS
     user -- (Create Lots / Serial Numbers)
     user -- (Edit Lots / Serial Numbers)
     user -- (Delete Lots / Serial Numbers)
-    user -- (Filters by Lots / Serial Numbers)
-    user -- (Export Lots / Serial Numbers)
-    user -- (View all Lots / Serial Numbers)
+    user -- ES
+    FS .> VS : <<extends>>
+    FS .> ES : <<extends>>
 }
 
 

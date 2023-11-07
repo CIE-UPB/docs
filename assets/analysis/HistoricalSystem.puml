@@ -1,0 +1,37 @@
+@startuml HistoricalSystem
+left to right direction
+
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+actor "Admin" as admin <<CIE>> #palegreen;line:green;line.dashed;text:green
+
+rectangle "Views" as Views {
+    boundary HistoricalView
+}
+
+database "Models" as Entities {
+    entity HistoricalProductEntity
+    entity HistoricalItemEntity
+}
+
+rectangle "Controllers" as Controllers {
+    rectangle "Historical" {
+        control GetHistoricalProductsController
+        control CreateHistoricalController
+        control UpdateHistoricalController
+        control DeleteHistoricalController
+    }
+}
+
+user -> HistoricalView
+admin -> HistoricalView
+
+HistoricalView -> GetHistoricalProductsController
+HistoricalView -> CreateHistoricalController
+HistoricalView -> UpdateHistoricalController
+HistoricalView -> DeleteHistoricalController
+
+GetHistoricalProductsController -> Entities
+CreateHistoricalController -> Entities
+UpdateHistoricalController -> Entities
+DeleteHistoricalController -> Entities
+@enduml

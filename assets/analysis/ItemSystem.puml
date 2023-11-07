@@ -1,0 +1,37 @@
+@startuml ItemSystem
+left to right direction
+
+actor "User" as user <<Emprendedores>> #pink;line:red;line.bold;text:red
+
+rectangle "Views" as Views {
+    boundary ItemView
+}
+
+database "Models" as Entities {
+    entity ItemEntity
+}
+
+rectangle "Controllers" as Controllers {
+    rectangle "Item" {
+        control GetItemController
+        control CreateItemController
+        control UpdateItemController
+        control DeleteItemController
+    }
+}
+
+user -> ItemView
+
+ItemView -> GetItemController
+ItemView -> CreateItemController
+ItemView -> UpdateItemController
+ItemView -> DeleteItemController
+
+
+GetItemController -> ItemEntity
+CreateItemController -> ItemEntity
+UpdateItemController -> ItemEntity
+DeleteItemController -> ItemEntity
+
+
+@enduml

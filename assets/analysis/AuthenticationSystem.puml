@@ -1,0 +1,12 @@
+@startuml AuthenticationSystem
+
+actor/ "users/" as actor
+boundary LoginView
+control LoginController
+entity UsersEntity
+
+actor -> LoginView
+LoginView -> LoginController
+LoginController -> UsersEntity
+
+@enduml
